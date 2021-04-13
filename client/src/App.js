@@ -1,10 +1,15 @@
+import React from "react";
+import Map from "./components/Map";
+//import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+
+import "./App.css";
 
 function App() {
-  return(
+  return (
     <div className="App">
-      <h1>Då kör vi</h1>
+      <Map />
     </div>
-    ) 
+  );
 }
 
 export default App;
