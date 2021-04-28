@@ -11,12 +11,11 @@ import polyline from "@mapbox/polyline";
 function Map() {
   const [activities, setActivites] = useState([]);
 
-  //TODO: put in env variables
-  const clientID = "64677";
-  const clientSecret = "f4b95ee6580a048b06f83303dda5cf7e8f9af2f0";
-  const refreshToken = "4adc2b41cef2b8d0181896bcb329365ae687fd07";
-  const auth_link = "https://www.strava.com/oauth/token";
-  const all_activities_link = `https://www.strava.com/api/v3/athlete/activities`;
+  const clientID = process.env.REACT_APP_STRAVA_CLIENTID;
+  const clientSecret = process.env.REACT_APP_STRAVA_CLIENT_SECRET;
+  const refreshToken = process.env.REACT_APP_STRAVA_REFRESH_TOKEN;
+  const auth_link = process.env.REACT_APP_STRAVA_AUTH_LINK;
+  const all_activities_link = process.env.REACT_APP_STRAVA_ALL_ACTIVITIES_LINK;
 
   //UseEffect is a hook that runs at first render and also after every update
   //TODO: Maybe not use useEffect function for this since strava limits the amount of requests. Consider using it in ComponentDidMount and a button to fetch it on demand.
@@ -54,7 +53,7 @@ function Map() {
   return (
     <div className="Map">
       <MapContainer
-        center={[59.417875, 13.481069]}
+        center={[58.588455, 16.188313]}//Norrköping
         zoom={13}
         scrollWheelZoom={true}
       >
