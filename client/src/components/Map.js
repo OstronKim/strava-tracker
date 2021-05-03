@@ -1,10 +1,5 @@
 import React, { useEffect, useState } from "react";
-import {
-  MapContainer,
-  TileLayer,
-  Popup,
-  Polyline,
-} from "react-leaflet";
+import { MapContainer, TileLayer, Popup, Polyline } from "react-leaflet";
 import axios from "axios";
 import polyline from "@mapbox/polyline";
 
@@ -47,13 +42,13 @@ function Map() {
       }
       setActivites(polylines);
     }
-    fetchData();
+    //fetchData();
   }, []); //[] to avoid useEffect infinite loop
 
   return (
     <div className="Map">
       <MapContainer
-        center={[58.588455, 16.188313]}//Norrköping
+        center={[58.588455, 16.188313]} //Norrköping
         zoom={13}
         scrollWheelZoom={true}
       >
