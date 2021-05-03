@@ -1,7 +1,7 @@
 const Validator = require("validator");
 const isEmpty = require("is-empty");
 
-//Takes data from the frontend form
+//Takes data from the frontend register form
 module.exports = function validateRegisterInput(data) {
   let errors = {}; //error object to return
 

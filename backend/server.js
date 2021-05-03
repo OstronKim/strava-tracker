@@ -1,6 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
+const passport = require("passport");
 
 require("dotenv").config();
 
@@ -24,11 +25,15 @@ connection.once("open", () => {
   console.log("MongoDB database connection established successfully");
 });
 
+//Routes
 const workoutsRouter = require("./routes/workouts");
 const usersRouter = require("./routes/users");
-
 app.use("/workouts", workoutsRouter);
 app.use("/users", usersRouter);
+
+//Passport middleware and config
+app.use(passport.initialize());
+require("./passport")(passport);
 
 app.listen(port, () => {
   console.log(`Server is running at http://localhost:${port}`);

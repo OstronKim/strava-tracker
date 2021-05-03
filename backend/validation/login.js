@@ -1,6 +1,7 @@
 const Validator = require("validator");
 const isEmpty = require("is-empty");
 
+//Takes data from the frontend login form
 module.exports = function validateLoginInput(data) {
   let errors = {};
 

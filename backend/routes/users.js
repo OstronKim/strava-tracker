@@ -1,23 +1,93 @@
-const router = require("express").Router();
-let User = require("../models/user.model");
+const express = require("express");
+const router = express.Router();
+const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
 
-router.route("/").get((req, res) => {
-  User.find()
-    .then((users) => res.json(users))
-    .catch((error) => res.status(400).json("Error: " + error));
+const validateLoginInput = require("../validation/login");
+const validateRegisterInput = require("../validation/register");
+
+const User = require("../models/user.model");
+
+// @route POST users/register
+// @desc Register user
+// @access Public
+
+router.post("/register", (req, res) => {
+  //form validation
+  const { errors, isValid } = validateRegisterInput(req.body);
+  if (!isValid) {
+    return res.status(400).json(errors);
+  }
+
+  User.findOne({ username: req.body.username }).then((user) => {
+    if (user) {
+      return res.status(400).json({ username: "Username already exists" });
+    } else {
+      const newUser = new User({
+        username: req.body.username,
+        password: req.body.password,
+      });
+
+      //Hash the password before saving it in database
+      bcrypt.genSalt(10, (err, salt) => {
+        bcrypt.hash(newUser.password, salt, (err, hash) => {
+          if (err) throw err;
+          newUser.password = hash;
+          newUser
+            .save()
+            .then((user) => res.json(user))
+            .catch((err) => console.log(err));
+        });
+      });
+    }
+  });
 });
 
-router.route("/add").post((req, res) => {
+// @route POST users/login
+// @desc Login user and return JWT token
+// @access Public
+
+router.post("/login", (req, res) => {
+  const { errors, isValid } = validateLoginInput(req.body);
+
+  if (!isValid) {
+    return res.status(400).json(errors);
+  }
+
   const username = req.body.username;
+  const password = req.body.password;
 
-  const newUser = new User({ username });
+  User.findOne({ username }).then((user) => {
+    if (!user) {
+      return res.status(404).json({ usernameNotFound: "Username not found" });
+    }
 
-  newUser
-    .save()
-    .then(() => res.json("User added"))
-    .catch((error) => res.status(400).json("Error: " + error));
+    //check and compare password
+    bcrypt.compare(password, user.password).then((isMatch) => {
+      if (isMatch) {
+        const payload = {
+          id: user.id,
+          username: user.username,
+        };
+
+        jwt.sign(
+          payload,
+          process.env.SECRETORKEY,
+          { expiresIn: 31556926 }, //1 year in seconds
+          (err, token) => {
+            res.json({
+              success: true,
+              token: "Bearer " + token,
+            });
+          }
+        );
+      } else {
+        return res
+          .status(400)
+          .json({ passwordincorrect: "password incorrect" });
+      }
+    });
+  });
 });
-
-//TODO: Add update/delete routes
 
 module.exports = router;
