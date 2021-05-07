@@ -4,13 +4,14 @@ import { Provider } from "react-redux";
 import store from "./store";
 
 import "bootstrap/dist/css/bootstrap.min.css";
-import "./App.scss";
+//import "./App.scss";
 
 import Map from "./components/Map";
 import Navbar from "./components/layout/Navbar";
 import Landing from "./components/layout/Landing";
 import Register from "./components/auth/Register";
 import Login from "./components/auth/Login";
+import Dashboard from "./components/Dashboard";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
           <Route exact path="/" component={Landing} />
           <Route exact path="/register" component={Register} />
           <Route exact path="/login" component={Login} />
+          <Route exact path="/dashboard" component={Dashboard} />
         </div>
       </Router>
     </Provider>
