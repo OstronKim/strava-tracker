@@ -11,38 +11,64 @@ function Map() {
   const refreshToken = process.env.REACT_APP_STRAVA_REFRESH_TOKEN;
   const auth_link = process.env.REACT_APP_STRAVA_AUTH_LINK;
   const all_activities_link = process.env.REACT_APP_STRAVA_ALL_ACTIVITIES_LINK;
+  const accessToken = process.env.REACT_APP_STRAVA_ACCESS_TOKEN;
 
   //UseEffect is a hook that runs at first render and also after every update
   //TODO: Maybe not use useEffect function for this since strava limits the amount of requests. Consider using it in ComponentDidMount and a button to fetch it on demand.
-  useEffect(() => {
-    async function fetchData() {
-      const stravaAuthResponse = await axios.all([
-        //Get a fresh access token. Maybe not call it in useEffect function since it updates frequently.
-        axios.post(
-          `${auth_link}?client_id=${clientID}&client_secret=${clientSecret}&refresh_token=${refreshToken}&grant_type=refresh_token`
-        ),
-      ]);
-      //Use the fresh access token to get all activities
-      const stravaActivityResponse = await axios.get(
-        `${all_activities_link}?access_token=${stravaAuthResponse[0].data.access_token}`
-      );
 
-      const polylines = [];
-      for (let i = 0; i < stravaActivityResponse.data.length; i += 1) {
-        const activity_polyline =
-          stravaActivityResponse.data[i].map.summary_polyline;
-        const activity_name = stravaActivityResponse.data[i].name;
-        const activity_elevation =
-          stravaActivityResponse.data[i].total_elevation_gain;
-        polylines.push({
-          activityPositions: polyline.decode(activity_polyline),
-          activityName: activity_name,
-          activityElevation: activity_elevation,
+  useEffect(() => {
+    async function getActivites(res) {
+      const activities_link = `https://www.strava.com/api/v3/athlete/activities?access_token=${accessToken}`;
+      fetch(activities_link)
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data[0]);
+          const polylines = [];
+          for (let i = 0; i < data.length; i += 1) {
+            const activity_polyline = data[i].map.summary_polyline;
+            const activity_name = data[i].name;
+            const activity_elevation = data[i].total_elevation_gain;
+            polylines.push({
+              activityPositions: polyline.decode(activity_polyline),
+              activityName: activity_name,
+              activityElevation: activity_elevation,
+            });
+          }
+          console.log(polylines);
+          setActivites(polylines);
         });
-      }
-      setActivites(polylines);
     }
-    //fetchData();
+    getActivites();
+
+    // async function fetchData() {
+    //   console.log("fetch data called");
+    //   const stravaAuthResponse = await axios.all([
+    //     //Get a fresh access token. Maybe not call it in useEffect function since it updates frequently.
+    //     axios.post(
+    //       `${auth_link}?client_id=${clientID}&client_secret=${clientSecret}&refresh_token=${refreshToken}&grant_type=refresh_token`
+    //     ),
+    //   ]);
+    //   console.log(stravaAuthResponse[0].data.access_token);
+    //   //Use the fresh access token to get all activities
+    //   const stravaActivityResponse = await axios.get(
+    //     `${all_activities_link}?access_token=${stravaAuthResponse[0].data.access_token}`
+    //   );
+    //   //console.log(stravaActivityResponse);
+    //   const polylines = [];
+    //   for (let i = 0; i < stravaActivityResponse.data.length; i += 1) {
+    //     const activity_polyline =
+    //       stravaActivityResponse.data[i].map.summary_polyline;
+    //     const activity_name = stravaActivityResponse.data[i].name;
+    //     const activity_elevation =
+    //       stravaActivityResponse.data[i].total_elevation_gain;
+    //     polylines.push({
+    //       activityPositions: polyline.decode(activity_polyline),
+    //       activityName: activity_name,
+    //       activityElevation: activity_elevation,
+    //     });
+    //   }
+    //   setActivites(polylines);
+    // }
   }, []); //[] to avoid useEffect infinite loop
 
   return (
