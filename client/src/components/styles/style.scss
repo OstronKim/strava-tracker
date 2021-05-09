@@ -1,0 +1,20 @@
+$dark-green: #164a41;
+$medium-Green: #4d774e;
+$light-green: #9dc88d;
+$natural-yellow: #f1b24a;
+$white: #ffffff;
+
+.leaflet-container {
+  height: 30rem;
+  width: 50rem;
+  margin: auto;
+  margin-top: 5%;
+}
+
+.landing-wrapper {
+  //background-image: url("../../img/landing-workout.jpg");
+  background-color: white;
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+}

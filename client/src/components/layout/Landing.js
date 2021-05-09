@@ -1,20 +1,24 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 
+import "../styles/style.scss";
+
 class Landing extends Component {
   render() {
     return (
-      <div style={{ height: "75vh" }} className="container valign-wrapper">
-        <div className="row">
+      <header className="landing-wrapper">
+        <div className="row" style={{ marginTop: "20rem" }}>
           <div className="col s12 center-align">
+            <h3>Welcome to your workout journal!</h3>
             <h4>
-              This is the landing page.
-              AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAaaaaaaaaaaa
+              Here you can keep track of your activities and connect them with
+              your strava data
             </h4>
-            <div className="col s6">
+            <div className="col s6 right-align" style={{ marginTop: "2rem" }}>
               <Link
                 to="/register"
                 style={{
+                  color: "white",
                   width: "140px",
                   borderRadius: "3px",
                   letterSpacing: "1.5px",
@@ -24,7 +28,7 @@ class Landing extends Component {
                 Register
               </Link>
             </div>
-            <div className="col s6">
+            <div className="col s6 left-align" style={{ marginTop: "2rem" }}>
               <Link
                 to="/login"
                 style={{
@@ -39,7 +43,7 @@ class Landing extends Component {
             </div>
           </div>
         </div>
-      </div>
+      </header>
     );
   }
 }
