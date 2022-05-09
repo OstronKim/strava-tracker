@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { logoutUser } from "../actions/authActions";
 import Map from "./Map";
+import WorkoutCards from "./WorkoutCards";
 
 import "./styles/style.scss";
 
@@ -21,6 +22,7 @@ class Dashboard extends Component {
           Hello <b> {user.username.split(" ")[0]} </b>
         </h3>
         <button onClick={this.onLogOutClick}>Logout</button>
+        <WorkoutCards />
         <Map />
       </div>
     );

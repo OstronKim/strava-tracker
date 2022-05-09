@@ -18,3 +18,14 @@ $white: #ffffff;
   background-size: cover;
   background-position: center;
 }
+
+.cardRow{
+  display:flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  gap: 3rem;
+}
+
+.card {
+  width:15%;
+}
