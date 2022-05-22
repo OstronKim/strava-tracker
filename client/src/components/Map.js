@@ -22,17 +22,19 @@ function Map() {
       fetch(activities_link)
         .then((res) => res.json())
         .then((data) => {
-          console.log(data[0]);
           const polylines = [];
           for (let i = 0; i < data.length; i += 1) {
             const activity_polyline = data[i].map.summary_polyline;
-            const activity_name = data[i].name;
-            const activity_elevation = data[i].total_elevation_gain;
-            polylines.push({
-              activityPositions: polyline.decode(activity_polyline),
-              activityName: activity_name,
-              activityElevation: activity_elevation,
-            });
+            // Skip polyline step if no route exists
+            if (activity_polyline != null) {
+              const activity_name = data[i].name;
+              const activity_elevation = data[i].total_elevation_gain;
+              polylines.push({
+                activityPositions: polyline.decode(activity_polyline),
+                activityName: activity_name,
+                activityElevation: activity_elevation,
+              });
+            }
           }
           console.log(polylines);
           setActivites(polylines);

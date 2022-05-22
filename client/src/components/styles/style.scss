@@ -1,8 +1,22 @@
-$dark-green: #164a41;
-$medium-Green: #4d774e;
-$light-green: #9dc88d;
-$natural-yellow: #f1b24a;
+$clr-primary: #001e3c;
+$clr-primary-dark: #0a1929;
+$clr-primary-bright: #0074e7;
+$clr-hover: #285887;
+
+
 $white: #ffffff;
+
+*,
+*::before,
+*::after{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body{
+  margin: 2rem;
+}
 
 .leaflet-container {
   height: 30rem;

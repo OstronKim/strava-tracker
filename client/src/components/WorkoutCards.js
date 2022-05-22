@@ -13,8 +13,9 @@ import ListItemText from "@mui/material/ListItemText";
 
 function Wcard(props) {
   return (
-    <Card>
+    <Card className="card">
       <Box
+        className="cardContent"
         sx={{
           maxWidth: 200,
         }}
