@@ -19,7 +19,7 @@ class Dashboard extends Component {
     this.auth_link = process.env.REACT_APP_STRAVA_AUTH_LINK;
 
     this.state = {
-      activities: null, //Stores all activities. Borde inte vara en state-grej
+      activities: null,
       currentActivity: null, //Den nuvarande valda aktiviteten
       currentPolylines: [],
     };
@@ -37,23 +37,28 @@ class Dashboard extends Component {
     fetch(activities_link)
       .then((res) => res.json())
       .then((data) => {
-        const polylines = [];
-        for (let i = 0; i < data.length; i += 1) {
-          const activity_polyline = data[i].map.summary_polyline;
-          // Skip polyline step if no route exists
-          if (activity_polyline != null) {
-            const activity_name = data[i].name;
-            const activity_elevation = data[i].total_elevation_gain;
-            polylines.push({
-              activityPositions: polyline.decode(activity_polyline),
-              activityName: activity_name,
-              activityElevation: activity_elevation,
-            });
-          }
-        }
-        this.setState({ currentPolylines: polylines, activities: data });
+        this.calcPolylines(data);
       });
   }
+
+  //Calculate and update state of the polylines given activities
+  calcPolylines = (data) => {
+    const polylines = [];
+    for (let i = 0; i < data.length; i += 1) {
+      const activity_polyline = data[i].map.summary_polyline;
+      // Skip polyline step if no route exists
+      if (activity_polyline != null) {
+        const activity_name = data[i].name;
+        const activity_elevation = data[i].total_elevation_gain;
+        polylines.push({
+          activityPositions: polyline.decode(activity_polyline),
+          activityName: activity_name,
+          activityElevation: activity_elevation,
+        });
+      }
+    }
+    this.setState({ currentPolylines: polylines });
+  };
 
   onLogOutClick = (e) => {
     e.preventDefault();
