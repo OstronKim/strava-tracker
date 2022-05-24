@@ -17,9 +17,9 @@ class Dashboard extends Component {
     this.clientSecret = process.env.REACT_APP_STRAVA_CLIENT_SECRET;
     this.refreshToken = process.env.REACT_APP_STRAVA_REFRESH_TOKEN;
     this.auth_link = process.env.REACT_APP_STRAVA_AUTH_LINK;
+    this.allActivities = {};
 
     this.state = {
-      activities: null,
       currentActivity: null, //Den nuvarande valda aktiviteten
       currentPolylines: [],
     };
@@ -37,6 +37,7 @@ class Dashboard extends Component {
     fetch(activities_link)
       .then((res) => res.json())
       .then((data) => {
+        this.allActivities = data;
         this.calcPolylines(data);
       });
   }
@@ -67,6 +68,7 @@ class Dashboard extends Component {
 
   render() {
     const { user } = this.props.auth;
+    console.log(this.allActivities);
 
     return (
       <div className="container">
@@ -74,7 +76,7 @@ class Dashboard extends Component {
           Hello <b> {user.username.split(" ")[0]} </b>
         </h3>
         <button onClick={this.onLogOutClick}>Logout</button>
-        <WorkoutCards />
+        <WorkoutCards allActivities={this.allActivities} />
         <Map polylines={this.state.currentPolylines} />
       </div>
     );

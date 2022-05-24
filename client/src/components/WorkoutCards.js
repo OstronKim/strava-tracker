@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
@@ -55,13 +55,28 @@ function Wcard(props) {
   );
 }
 let titles = ["one", "two", "three", "four", "five"];
+console.log();
 
 //Egentligen ta in de 5 senaste (eller färre om inte 5 finns) och hämta ut ur props
 function WorkoutCards(props) {
+  const [latestActivities, setLatestActivities] = useState([]);
+
+  useEffect(() => {
+    let la = [];
+    if (props.allActivities != null) {
+      for (let i = 0; i < Object.keys(props.allActivities).length; i++) {
+        if (i === 5) break;
+        la.push(props.allActivities[i]);
+      }
+      setLatestActivities(la);
+    }
+  }, [props.allActivities]);
+
+  console.log(latestActivities);
   return (
     <div className="cardRow">
-      {titles.map(function (title) {
-        return <Wcard key={title} title={title} />;
+      {latestActivities.map(function (activity, i) {
+        return <Wcard key={i} title={activity.name} />;
       })}
     </div>
   );
