@@ -79,7 +79,12 @@ class Dashboard extends Component {
         </h3>
         <button onClick={this.onLogOutClick}>Logout</button>
         <WorkoutCards allActivities={this.allActivities} />
-        <Link to="/allworkouts">
+        <Link
+          to={{
+            pathname: "/allworkouts",
+            state: { allActivities: this.allActivities },
+          }}
+        >
           <Button variant="text">See all workouts</Button>
         </Link>
         <Map polylines={this.state.currentPolylines} />
