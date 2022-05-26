@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { logoutUser } from "../actions/authActions";
@@ -6,6 +7,7 @@ import axios from "axios";
 import polyline from "@mapbox/polyline";
 import Map from "./Map";
 import WorkoutCards from "./WorkoutCards";
+import Button from "@mui/material/Button";
 
 import "./styles/style.scss";
 
@@ -77,6 +79,9 @@ class Dashboard extends Component {
         </h3>
         <button onClick={this.onLogOutClick}>Logout</button>
         <WorkoutCards allActivities={this.allActivities} />
+        <Link to="/allworkouts">
+          <Button variant="text">See all workouts</Button>
+        </Link>
         <Map polylines={this.state.currentPolylines} />
       </div>
     );

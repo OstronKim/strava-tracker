@@ -74,15 +74,12 @@ function Wcard(props) {
             <ListItem disablePadding>
               <ListItemText primary="Distance"></ListItemText>
               <ListItemText
-                primary={`${convertDistance(props.info.distance)} m`}
+                primary={`${convertDistance(props.info.distance)} km`}
               ></ListItemText>
             </ListItem>
             <Divider />
             <ListItem disablePadding>
               <ListItemText primary="Pace"></ListItemText>
-              {/* <ListItemText
-                primary={`${this.props.info.average_speed} m`}
-              ></ListItemText> */}
               <ListItemText
                 primary={`${props.info.average_speed.toFixed(1)} m/s`}
               ></ListItemText>

@@ -13,6 +13,7 @@ import Landing from "./components/layout/Landing";
 import Register from "./components/auth/Register";
 import Login from "./components/auth/Login";
 import Dashboard from "./components/Dashboard";
+import AllWorkouts from "./components/AllWorkouts";
 import PrivateRoute from "./components/PrivateRoute";
 
 //Keep user logged in if has valid token
@@ -41,6 +42,7 @@ function App() {
           <Route exact path="/login" component={Login} />
           <Switch>
             <PrivateRoute exact path="/dashboard" component={Dashboard} />
+            <PrivateRoute exact path="/allworkouts" component={AllWorkouts} />
           </Switch>
         </div>
       </Router>
