@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useHistory, generatePath } from "react-router-dom";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
@@ -12,6 +13,16 @@ import Divider from "@mui/material/Divider";
 import ListItemText from "@mui/material/ListItemText";
 
 function Wcard(props) {
+  const [id, setId] = useState();
+  const history = useHistory();
+
+  useEffect(() => {
+    setId(props.info.id);
+  }, [props.info.id]);
+
+  const handleProceed = (e) => {
+    id && history.push(generatePath("/activity/:id", { id }));
+  };
   const convertDistance = (dist) => {
     return (dist / 1000).toFixed(1);
   };
@@ -25,7 +36,8 @@ function Wcard(props) {
       <Box
         className="cardContent"
         sx={{
-          maxWidth: 200,
+          minWidth: 200,
+          maxWidth: 300,
         }}
       >
         <CardMedia
@@ -69,8 +81,8 @@ function Wcard(props) {
           </List>
         </CardContent>
         <CardActions style={{ justifyContent: "center" }}>
-          <Button variant="contained" size="small">
-            View route on map
+          <Button variant="contained" size="small" onClick={handleProceed}>
+            View workout
           </Button>
         </CardActions>
       </Box>
