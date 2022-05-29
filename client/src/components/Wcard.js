@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useHistory, generatePath } from "react-router-dom";
+import { useHistory, generatePath, Link } from "react-router-dom";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
@@ -20,9 +20,9 @@ function Wcard(props) {
     setId(props.info.id);
   }, [props.info.id]);
 
-  const handleProceed = (e) => {
-    id && history.push(generatePath("/activity/:id", { id }));
-  };
+  // const handleProceed = (e) => {
+  //   id && history.push(generatePath("/activity/:id", { id }));
+  // };
   const convertDistance = (dist) => {
     return (dist / 1000).toFixed(1);
   };
@@ -81,9 +81,16 @@ function Wcard(props) {
           </List>
         </CardContent>
         <CardActions style={{ justifyContent: "center" }}>
-          <Button variant="contained" size="small" onClick={handleProceed}>
-            View workout
-          </Button>
+          <Link
+            to={{
+              pathname: "activity/" + `${props.info.id}`,
+              state: { activity: props.info },
+            }}
+          >
+            <Button variant="contained" size="small">
+              View workout
+            </Button>
+          </Link>
         </CardActions>
       </Box>
     </Card>
