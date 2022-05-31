@@ -1,19 +1,38 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import polyline from "@mapbox/polyline";
+import Map from "./Map";
 
 import "./styles/activityDetails.scss";
 
 function ActivityDetails(props) {
   let { id } = useParams();
+  const [Polylines, setPolylines] = useState([]);
   const activity = props.location.state.activity;
   let date_time = props.location.state.activity.start_date.split("T");
   const date = date_time[0];
   const time = date_time[1].split(":");
-  console.log(date, time);
-  console.log(activity);
   const convertDistance = (dist) => {
     return (dist / 1000).toFixed(1);
   };
+
+  useEffect(() => {
+    let data = props.location.state.activity;
+    const polylines = [];
+    const activity_polyline = data.map.summary_polyline;
+    // Skip polyline step if no route exists
+    if (activity_polyline != null) {
+      const activity_name = data.name;
+      const activity_elevation = data.total_elevation_gain;
+      polylines.push({
+        activityPositions: polyline.decode(activity_polyline),
+        activityName: activity_name,
+        activityElevation: activity_elevation,
+      });
+    }
+    setPolylines(polylines);
+  }, [props.location.state.activity]);
+
   return (
     <div className="container">
       <div className="header">
@@ -61,6 +80,7 @@ function ActivityDetails(props) {
           <p>Total elevation gain</p>
         </div>
       </div>
+      <Map polylines={Polylines} />
     </div>
   );
 }

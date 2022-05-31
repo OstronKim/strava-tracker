@@ -83,7 +83,7 @@ function Wcard(props) {
         <CardActions style={{ justifyContent: "center" }}>
           <Link
             to={{
-              pathname: "activity/" + `${props.info.id}`,
+              pathname: "activity/" + `${id}`,
               state: { activity: props.info },
             }}
           >
