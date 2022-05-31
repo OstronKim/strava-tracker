@@ -36,8 +36,11 @@
   }
   .item-right {
     display:flex;
+    flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-between;
+    align-items: stretch;
+    align-content: stretch;
     width: 50%;
     height: 300px;
     margin-bottom: 2%;
@@ -46,11 +49,15 @@
     border-top: none;
     border-left: none;
   }
-  .item-right-sub {
+  .item {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column;
+    p {
+      font-weight: bold;
+    }
     width: 32%;
-    padding-bottom: 32%; /* Same as width, sets height */
-    margin-bottom: 2%; /* (100-32*3)/2 */
-    margin-top: 2rem;
-    border:solid;
-    position: relative;
+    height: 50%;
+    text-align: center;
   }
