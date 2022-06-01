@@ -24,10 +24,12 @@ function ActivityDetails(props) {
     if (activity_polyline != null) {
       const activity_name = data.name;
       const activity_elevation = data.total_elevation_gain;
+      const activity_distance = data.distance;
       polylines.push({
         activityPositions: polyline.decode(activity_polyline),
         activityName: activity_name,
         activityElevation: activity_elevation,
+        activityDistance: activity_distance,
       });
     }
     setPolylines(polylines);

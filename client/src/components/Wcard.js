@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useHistory, generatePath, Link } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
@@ -20,15 +20,8 @@ function Wcard(props) {
     setId(props.info.id);
   }, [props.info.id]);
 
-  // const handleProceed = (e) => {
-  //   id && history.push(generatePath("/activity/:id", { id }));
-  // };
   const convertDistance = (dist) => {
     return (dist / 1000).toFixed(1);
-  };
-
-  const convertPace = (dist) => {
-    return ((props.info.average_speed / 1000) * 60).toFixed(2);
   };
 
   return (
@@ -47,8 +40,13 @@ function Wcard(props) {
           alt="running"
         />
         <CardContent>
-          <Typography gutterBottom variant="h5" component="div">
-            {props.info.type}
+          <Typography
+            gutterBottom
+            variant="h5"
+            component="div"
+            sx={{ textAlign: "center" }}
+          >
+            {props.info.name}
           </Typography>
           <List dense={true}>
             <ListItem disablePadding>

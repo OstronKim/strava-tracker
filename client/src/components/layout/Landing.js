@@ -28,7 +28,7 @@ class Landing extends Component {
                 Register
               </Link>
             </div>
-            <div className="col s6 left-align" style={{ marginTop: "2rem" }}>
+            <div className="col s1 left-align" style={{ marginTop: "2rem" }}>
               <Link
                 to="/login"
                 style={{

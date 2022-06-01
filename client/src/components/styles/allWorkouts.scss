@@ -1,0 +1,42 @@
+.allWorkouts-container {
+    max-width: 100%;
+    margin: auto;
+    margin-right: 20%;
+}
+.top-bar{
+    width: 100%;
+
+    h1 {
+        text-align: center;
+    }
+
+}
+
+.page {
+    display: flex;
+    margin: auto -1rem 1rem;
+    margin-top: 3rem;
+}
+.col {
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+    padding: 1rem;
+}
+.workouts {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    flex: 3;
+    margin-left: 10%;
+}
+.workouts > div {
+    margin: 1rem;
+}
+
+.sidebar {
+    flex: 1;
+    border: solid;
+    h2 {
+        text-align: center;
+    }
+}

@@ -3,6 +3,7 @@ import { MapContainer, TileLayer, Popup, Polyline } from "react-leaflet";
 
 function Map(props) {
   const [currentPolylines, setCurrentPolylines] = useState([]);
+  const colors = ["blue", "orange", "red", "black", "purple"];
 
   // Update polylines when props.polylines changes
   useEffect(() => {
@@ -22,11 +23,18 @@ function Map(props) {
           //https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}
         />
         {currentPolylines.map((polyline, i) => (
-          <Polyline key={i} positions={polyline.activityPositions}>
+          <Polyline
+            key={i}
+            positions={polyline.activityPositions}
+            color={colors[i]}
+          >
             <Popup>
               <div>
-                <h2>{"Name: " + polyline.activityName}</h2>
-                <p>{"Total Elevation Gain: " + polyline.activityElevation}</p>
+                <h2>{polyline.activityName}</h2>
+                <p>{"Distance: " + polyline.activityDistance + "m"}</p>
+                <p>
+                  {"Total Elevation Gain: " + polyline.activityElevation + "m"}
+                </p>
               </div>
             </Popup>
           </Polyline>

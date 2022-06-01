@@ -53,10 +53,12 @@ class Dashboard extends Component {
       if (activity_polyline != null) {
         const activity_name = data[i].name;
         const activity_elevation = data[i].total_elevation_gain;
+        const activity_distance = data[i].distance;
         polylines.push({
           activityPositions: polyline.decode(activity_polyline),
           activityName: activity_name,
           activityElevation: activity_elevation,
+          activityDistance: activity_distance,
         });
       }
     }
@@ -74,20 +76,32 @@ class Dashboard extends Component {
 
     return (
       <div className="container">
-        <h3>
-          Hello <b> {user.username.split(" ")[0]} </b>
-        </h3>
-        <button onClick={this.onLogOutClick}>Logout</button>
-        <WorkoutCards allActivities={this.allActivities} />
-        <Link
-          to={{
-            pathname: "/allworkouts",
-            state: { allActivities: this.allActivities },
-          }}
-        >
-          <Button variant="text">See all workouts</Button>
-        </Link>
-        <Map polylines={this.state.currentPolylines} />
+        <div className="dashboard-content">
+          <div className="dashboard-top-bar">
+            <h3>
+              Hello <b> {user.username.split(" ")[0]} </b>
+            </h3>
+            <Button
+              variant="contained"
+              size="small"
+              onClick={this.onLogOutClick}
+            >
+              Logout
+            </Button>
+          </div>
+          <WorkoutCards allActivities={this.allActivities} />
+          <div className="see-all-btn">
+            <Link
+              to={{
+                pathname: "/allworkouts",
+                state: { allActivities: this.allActivities },
+              }}
+            >
+              <Button variant="text">See all workouts</Button>
+            </Link>
+          </div>
+          <Map polylines={this.state.currentPolylines} />
+        </div>
       </div>
     );
   }
