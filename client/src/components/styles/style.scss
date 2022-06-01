@@ -1,10 +1,6 @@
-$clr-primary: #001e3c;
-$clr-primary-dark: #0a1929;
-$clr-primary-bright: #0074e7;
-$clr-hover: #285887;
-
-
-$white: #ffffff;
+$clr-background: #fef6e4;
+$clr-content: #f3d2c1;
+$clr-text: #272343;
 
 *,
 *::before,
@@ -16,7 +12,13 @@ $white: #ffffff;
 
 body{
   margin: 2rem;
-  background-color: white;
+  background-color: $clr-background;
+  p{
+    color: #272343;
+  }
+  h3{
+    color:$clr-text;
+  }
 }
 
 .leaflet-container {
@@ -56,4 +58,8 @@ body{
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.cardContent {
+  background-color: $clr-content;
 }

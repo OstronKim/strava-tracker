@@ -85,6 +85,14 @@ class Dashboard extends Component {
               variant="contained"
               size="small"
               onClick={this.onLogOutClick}
+              sx={{
+                backgroundColor: "orange",
+                color: "#272343",
+                fontWeight: "bold",
+                ":hover": {
+                  bgcolor: "orange",
+                },
+              }}
             >
               Logout
             </Button>
@@ -97,7 +105,18 @@ class Dashboard extends Component {
                 state: { allActivities: this.allActivities },
               }}
             >
-              <Button variant="text">See all workouts</Button>
+              <Button
+                variant="text"
+                sx={{
+                  color: "#272343",
+                  fontWeight: "bold",
+                  ":hover": {
+                    bgcolor: "orange",
+                  },
+                }}
+              >
+                See all workouts
+              </Button>
             </Link>
           </div>
           <Map polylines={this.state.currentPolylines} />

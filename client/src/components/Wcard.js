@@ -12,6 +12,8 @@ import ListItem from "@mui/material/ListItem";
 import Divider from "@mui/material/Divider";
 import ListItemText from "@mui/material/ListItemText";
 
+import "./styles/style.scss";
+
 function Wcard(props) {
   const [id, setId] = useState();
   const history = useHistory();
@@ -44,11 +46,11 @@ function Wcard(props) {
             gutterBottom
             variant="h5"
             component="div"
-            sx={{ textAlign: "center" }}
+            sx={{ textAlign: "center", fontWeight: "bold" }}
           >
             {props.info.name}
           </Typography>
-          <List dense={true}>
+          <List dense={true} sx={{ color: "#272343" }}>
             <ListItem disablePadding>
               <ListItemText primary="Duration"></ListItemText>
               <ListItemText
@@ -85,7 +87,18 @@ function Wcard(props) {
               state: { activity: props.info },
             }}
           >
-            <Button variant="contained" size="small">
+            <Button
+              variant="contained"
+              size="small"
+              sx={{
+                backgroundColor: "orange",
+                color: "#272343",
+                fontWeight: "bold",
+                ":hover": {
+                  bgcolor: "orange",
+                },
+              }}
+            >
               View workout
             </Button>
           </Link>
