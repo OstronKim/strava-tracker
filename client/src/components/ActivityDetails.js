@@ -66,7 +66,7 @@ function ActivityDetails(props) {
       </div>
       <div className="item-right">
         <div className="item">
-          <h1>{activity.elapsed_time} s </h1>
+          <h1>{(activity.elapsed_time / 60).toFixed(1)} min </h1>
           <p>Duration</p>
         </div>
         <div className="item">

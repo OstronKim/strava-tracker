@@ -69,7 +69,7 @@ function Wcard(props) {
             <ListItem disablePadding>
               <ListItemText primary="Duration"></ListItemText>
               <ListItemText
-                primary={`${props.info.elapsed_time} s`}
+                primary={`${(props.info.elapsed_time / 60).toFixed(1)} min`}
               ></ListItemText>
             </ListItem>
             <Divider />
