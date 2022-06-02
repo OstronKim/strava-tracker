@@ -35,22 +35,30 @@ function ActivityDetails(props) {
     setPolylines(polylines);
   }, [props.location.state.activity]);
 
+  const getActivityImg = (type) => {
+    if (type === "Run") {
+      return "https://images.unsplash.com/photo-1610969524113-bae462bb3892?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80";
+    } else if (type === "Ride") {
+      return "https://images.unsplash.com/photo-1456990493443-0d0ee2a630cc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80";
+    } else if (type === "Walk") {
+      return "https://images.unsplash.com/photo-1526573461737-b504d8040d92?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80";
+    } else {
+      return "https://images.unsplash.com/photo-1557330359-ffb0deed6163?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80";
+    }
+  };
+
   return (
-    <div className="container">
+    <div className="a-container">
       <div className="header">
         <h1>Arvid - {activity.type}</h1>
       </div>
       <div className="item-left">
         <div className="item-left-left">
-          <img
-            className="image"
-            src="https://images.unsplash.com/photo-1610969524113-bae462bb3892?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80"
-            alt=""
-          />
+          <img className="image" src={getActivityImg(activity.type)} alt="" />
         </div>
         <div className="item-left-right">
           <h1>{activity.name}</h1>
-          <p>Type of activity: Run</p>
+          <p>Type of activity: {activity.type}</p>
           <p>
             {date} {time[0]}:{time[1]}, {activity.location_country}
           </p>
@@ -71,11 +79,11 @@ function ActivityDetails(props) {
         </div>
         <div className="item">
           <h1>{activity.elev_high} m</h1>
-          <p>Upwards elevation</p>
+          <p>Highest elevation</p>
         </div>
         <div className="item">
-          <h1>{activity.elev_low}</h1>
-          <p>Downwards elevation</p>
+          <h1>{activity.elev_low} m</h1>
+          <p>Lowest elevation</p>
         </div>
         <div className="item">
           <h1>{activity.total_elevation_gain} m</h1>

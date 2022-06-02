@@ -17,10 +17,25 @@ import "./styles/style.scss";
 function Wcard(props) {
   const [id, setId] = useState();
   const history = useHistory();
+  let date_time = props.info.start_date.split("T");
+  const date = date_time[0];
+  const time = date_time[1].split(":");
 
   useEffect(() => {
     setId(props.info.id);
   }, [props.info.id]);
+
+  const getActivityImg = (type) => {
+    if (type === "Run") {
+      return "https://images.unsplash.com/photo-1610969524113-bae462bb3892?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80";
+    } else if (type === "Ride") {
+      return "https://images.unsplash.com/photo-1456990493443-0d0ee2a630cc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80";
+    } else if (type === "Walk") {
+      return "https://images.unsplash.com/photo-1526573461737-b504d8040d92?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80";
+    } else {
+      return "https://images.unsplash.com/photo-1557330359-ffb0deed6163?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80";
+    }
+  };
 
   const convertDistance = (dist) => {
     return (dist / 1000).toFixed(1);
@@ -38,7 +53,7 @@ function Wcard(props) {
         <CardMedia
           component="img"
           height="100"
-          image="https://images.unsplash.com/photo-1610969524113-bae462bb3892?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80"
+          image={getActivityImg(props.info.type)}
           alt="running"
         />
         <CardContent>
@@ -78,6 +93,11 @@ function Wcard(props) {
                 primary={`${props.info.total_elevation_gain} m`}
               ></ListItemText>
             </ListItem>
+            <Divider />
+            <ListItemText
+              sx={{ textAlign: "center" }}
+              primary={date + ", " + time[0] + ":" + time[1]}
+            ></ListItemText>
           </List>
         </CardContent>
         <CardActions style={{ justifyContent: "center" }}>
