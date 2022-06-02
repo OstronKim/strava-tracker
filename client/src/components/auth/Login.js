@@ -4,8 +4,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { loginUser } from "../../actions/authActions";
 import classnames from "classnames";
-
-import "../styles/style.scss";
+import Button from "@mui/material/Button";
 
 class Login extends Component {
   constructor() {
@@ -53,9 +52,9 @@ class Login extends Component {
     const errors = this.state.errors;
 
     return (
-      <div className="container">
+      <div className="login-container">
         <div style={{ marginTop: "10rem" }} className="row">
-          <div className="col s8 offset-s4">
+          <div className="col s8 offset-s5">
             <Link
               to="/"
               className="btn-flat waves-effect"
@@ -69,11 +68,21 @@ class Login extends Component {
                 <b>Login</b> below
               </h4>
               <p className="grey-text text-darken-1">
-                Don't have an account? <Link to="/register">Register</Link>
+                Don't have an account?{" "}
+                <Link
+                  to="/register"
+                  style={{
+                    color: "orange",
+                    fontWeight: "bold",
+                    textDecoration: "underline",
+                  }}
+                >
+                  Register
+                </Link>
               </p>
             </div>
             <form noValidate onSubmit={this.onSubmit}>
-              <div className="col s12">
+              <div className="col s7">
                 <div className="input-field col s5">
                   <input
                     onChange={this.onChange}
@@ -92,7 +101,7 @@ class Login extends Component {
                   </span>
                 </div>
               </div>
-              <div className="col s12">
+              <div className="col s7">
                 <div className="input-field col s5">
                   <label htmlFor="password">Password</label>
                   <input
@@ -111,21 +120,24 @@ class Login extends Component {
                   </span>
                 </div>
               </div>
-              <div className="col s12" style={{ paddingLeft: "11.250px" }}>
-                <button
-                  style={{
-                    color: "white",
-                    width: "150px",
-                    borderRadius: "3px",
-                    letterSpacing: "1.5px",
-                    marginTop: "1rem",
-                    marginLeft: "0.5rem",
+              <div className="col s7" style={{ paddingLeft: "11.250px" }}>
+                <Button
+                  variant="contained"
+                  size="large"
+                  sx={{
+                    width: "140px",
+                    height: "50px",
+                    marginLeft: "10%",
+                    backgroundColor: "orange",
+                    color: "#272343",
+                    fontWeight: "bold",
+                    ":hover": {
+                      bgcolor: "orange",
+                    },
                   }}
-                  type="submit"
-                  className="btn btn-large waves-effect waves-light hoverable blue accent-3"
                 >
                   Login
-                </button>
+                </Button>
               </div>
             </form>
           </div>
