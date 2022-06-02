@@ -5,6 +5,8 @@ import { connect } from "react-redux";
 import { loginUser } from "../../actions/authActions";
 import classnames from "classnames";
 
+import "../styles/style.scss";
+
 class Login extends Component {
   constructor() {
     super();
