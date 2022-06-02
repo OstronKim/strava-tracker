@@ -145,8 +145,9 @@ class Register extends Component {
                       bgcolor: "orange",
                     },
                   }}
+                  type="submit"
                 >
-                  Register
+                  Sign up
                 </Button>
               </div>
             </form>

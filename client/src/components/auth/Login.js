@@ -135,6 +135,7 @@ class Login extends Component {
                       bgcolor: "orange",
                     },
                   }}
+                  type="submit"
                 >
                   Login
                 </Button>
