@@ -1,3 +1,7 @@
+$clr-background: #fef6e4;
+$clr-content: #f3d2c1;
+$clr-text: #272343;
+
 .allWorkouts-container {
     max-width: 100%;
     margin: auto;
@@ -35,8 +39,28 @@
 
 .sidebar {
     flex: 1;
+    align-items: baseline;
     border: solid;
+    border-width: 1px;
+    background: $clr-content;
+    border-radius: 10px;
+    margin-left: 5%;
+    height: 400px;
     h2 {
         text-align: center;
+    }
+}
+.sidebar-content {
+    display:flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    text-align: center;
+    margin-top: 10%;
+    h3 {
+        width:50%; 
+    }
+    p {
+        width:50%;
+        font-weight: bold;
     }
 }
