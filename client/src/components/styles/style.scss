@@ -13,6 +13,7 @@ $clr-text: #272343;
 body{
   margin: 2rem;
   background-color: $clr-background;
+  width:100%;
   p{
     color: #272343;
   }
@@ -35,6 +36,10 @@ body{
   background-position: center;
 }
 
+.container {
+  min-width: 80%;
+}
+
 .dashboard-top-bar {
   display: flex;
   flex-direction: row;
@@ -47,6 +52,13 @@ body{
 
 }
 
+.dashboard-content {
+  h2{
+    text-align: center;
+    text-decoration: underline;
+  }
+
+}
 .cardRow{
   display:flex;
   flex-flow: row wrap;

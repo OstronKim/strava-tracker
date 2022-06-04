@@ -76,9 +76,9 @@ class Dashboard extends Component {
       <div className="container">
         <div className="dashboard-content">
           <div className="dashboard-top-bar">
-            <h3>
+            <h2>
               Hello <b> {this.user.username.split(" ")[0]} </b>
-            </h3>
+            </h2>
             <Button
               variant="contained"
               size="small"
@@ -95,6 +95,7 @@ class Dashboard extends Component {
               Logout
             </Button>
           </div>
+          <h2>Your most recent workouts</h2>
           <WorkoutCards allActivities={this.allActivities} />
           <div className="see-all-btn">
             <Link

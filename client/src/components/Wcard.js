@@ -46,8 +46,8 @@ function Wcard(props) {
       <Box
         className="cardContent"
         sx={{
-          minWidth: 200,
-          maxWidth: 300,
+          minWidth: 250,
+          maxWidth: 250,
         }}
       >
         <CardMedia
