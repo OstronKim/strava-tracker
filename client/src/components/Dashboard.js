@@ -15,14 +15,14 @@ class Dashboard extends Component {
   constructor(props) {
     super(props);
 
-    this.clientID = process.env.REACT_APP_STRAVA_CLIENTID;
-    this.clientSecret = process.env.REACT_APP_STRAVA_CLIENT_SECRET;
-    this.refreshToken = process.env.REACT_APP_STRAVA_REFRESH_TOKEN;
+    this.user = this.props.auth.user;
+    this.clientID = this.props.auth.user.clientID;
+    this.clientSecret = this.props.auth.user.clientSecret;
+    this.refreshToken = this.props.auth.user.refreshToken;
     this.auth_link = process.env.REACT_APP_STRAVA_AUTH_LINK;
     this.allActivities = {};
 
     this.state = {
-      currentActivity: null, //Den nuvarande valda aktiviteten
       currentPolylines: [],
     };
   }
@@ -35,7 +35,6 @@ class Dashboard extends Component {
     ]);
     const respAccessToken = stravaAuthResponse[0].data.access_token;
     const activities_link = `https://www.strava.com/api/v3/athlete/activities?access_token=${respAccessToken}`;
-    console.log("Just a check to see how often strava api call is run");
     fetch(activities_link)
       .then((res) => res.json())
       .then((data) => {
@@ -71,7 +70,6 @@ class Dashboard extends Component {
   };
 
   render() {
-    const { user } = this.props.auth;
     console.log(this.allActivities);
 
     return (
@@ -79,7 +77,7 @@ class Dashboard extends Component {
         <div className="dashboard-content">
           <div className="dashboard-top-bar">
             <h3>
-              Hello <b> {user.username.split(" ")[0]} </b>
+              Hello <b> {this.user.username.split(" ")[0]} </b>
             </h3>
             <Button
               variant="contained"

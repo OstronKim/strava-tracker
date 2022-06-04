@@ -6,10 +6,22 @@ const userSchema = new Schema({
     type: String,
     required: true,
     unique: true,
-    trime: true,
+    trim: true,
     minlength: 3,
   },
   password: {
+    type: String,
+    required: true,
+  },
+  clientID: {
+    type: String,
+    required: true,
+  },
+  clientSecret: {
+    type: String,
+    required: true,
+  },
+  refreshToken: {
     type: String,
     required: true,
   },

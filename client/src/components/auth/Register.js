@@ -13,6 +13,9 @@ class Register extends Component {
       username: "",
       password: "",
       password2: "",
+      clientID: "",
+      clientSecret: "",
+      refreshToken: "",
       errors: {},
     };
   }
@@ -43,6 +46,9 @@ class Register extends Component {
       username: this.state.username,
       password: this.state.password,
       password2: this.state.password2,
+      clientID: this.state.clientID,
+      clientSecret: this.state.clientSecret,
+      refreshToken: this.state.refreshToken,
     };
 
     this.props.registerUser(newUser, this.props.history);
@@ -128,6 +134,39 @@ class Register extends Component {
                   />
                   <label htmlFor="password2">Confirm Password</label>
                   <span className="red-text">{errors.password2}</span>
+                </div>
+              </div>
+              <div className="col s7">
+                <div className="input-field col s5">
+                  <input
+                    onChange={this.onChange}
+                    value={this.state.clientID}
+                    id="clientID"
+                    type="text"
+                  />
+                  <label htmlFor="clientID">Strava client ID</label>
+                </div>
+              </div>
+              <div className="col s7">
+                <div className="input-field col s5">
+                  <input
+                    onChange={this.onChange}
+                    value={this.state.clientSecret}
+                    id="clientSecret"
+                    type="text"
+                  />
+                  <label htmlFor="clientSecret">Strava client secret</label>
+                </div>
+              </div>
+              <div className="col s7">
+                <div className="input-field col s5">
+                  <input
+                    onChange={this.onChange}
+                    value={this.state.refreshToken}
+                    id="refreshToken"
+                    type="text"
+                  />
+                  <label htmlFor="refreshToken">Strava refresh token</label>
                 </div>
               </div>
               <div className="col s12" style={{ paddingLeft: "11.250px" }}>
