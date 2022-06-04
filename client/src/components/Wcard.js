@@ -67,35 +67,60 @@ function Wcard(props) {
           </Typography>
           <List dense={true} sx={{ color: "#272343" }}>
             <ListItem disablePadding>
-              <ListItemText primary="Duration"></ListItemText>
               <ListItemText
+                primary="Duration"
+                disableTypography
+                sx={{ fontWeight: "bold" }}
+              ></ListItemText>
+              <ListItemText
+                disableTypography
+                sx={{ fontWeight: "bold" }}
                 primary={`${(props.info.elapsed_time / 60).toFixed(1)} min`}
               ></ListItemText>
             </ListItem>
             <Divider />
             <ListItem disablePadding>
-              <ListItemText primary="Distance"></ListItemText>
               <ListItemText
+                disableTypography
+                sx={{ fontWeight: "bold" }}
+                primary="Distance"
+              ></ListItemText>
+              <ListItemText
+                disableTypography
+                sx={{ fontWeight: "bold" }}
                 primary={`${convertDistance(props.info.distance)} km`}
               ></ListItemText>
             </ListItem>
             <Divider />
             <ListItem disablePadding>
-              <ListItemText primary="Pace"></ListItemText>
               <ListItemText
+                disableTypography
+                sx={{ fontWeight: "bold" }}
+                primary="Pace"
+              ></ListItemText>
+              <ListItemText
+                disableTypography
+                sx={{ fontWeight: "bold" }}
                 primary={`${props.info.average_speed.toFixed(1)} m/s`}
               ></ListItemText>
             </ListItem>
             <Divider />
             <ListItem disablePadding>
-              <ListItemText primary="Elevation"></ListItemText>
               <ListItemText
+                disableTypography
+                sx={{ fontWeight: "bold" }}
+                primary="Elevation"
+              ></ListItemText>
+              <ListItemText
+                disableTypography
+                sx={{ fontWeight: "bold" }}
                 primary={`${props.info.total_elevation_gain} m`}
               ></ListItemText>
             </ListItem>
             <Divider />
             <ListItemText
-              sx={{ textAlign: "center" }}
+              disableTypography
+              sx={{ textAlign: "center", fontWeight: "bold" }}
               primary={date + ", " + time[0] + ":" + time[1]}
             ></ListItemText>
           </List>
