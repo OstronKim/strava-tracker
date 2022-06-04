@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { useSelector } from "react-redux";
 import polyline from "@mapbox/polyline";
 import Map from "./Map";
 
@@ -7,11 +8,13 @@ import "./styles/activityDetails.scss";
 
 function ActivityDetails(props) {
   let { id } = useParams();
+  const user = useSelector((state) => state.auth.user.username);
   const [Polylines, setPolylines] = useState([]);
   const activity = props.location.state.activity;
   let date_time = props.location.state.activity.start_date.split("T");
   const date = date_time[0];
   const time = date_time[1].split(":");
+
   const convertDistance = (dist) => {
     return (dist / 1000).toFixed(1);
   };
@@ -50,7 +53,9 @@ function ActivityDetails(props) {
   return (
     <div className="a-container">
       <div className="header">
-        <h1>Arvid - {activity.type}</h1>
+        <h1>
+          {user} - {activity.type}
+        </h1>
       </div>
       <div className="item-left">
         <div className="item-left-left">
