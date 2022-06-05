@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import polyline from "@mapbox/polyline";
 import Map from "../Map";
@@ -7,7 +6,6 @@ import Map from "../Map";
 import "../styles/activityDetails.scss";
 
 function ActivityDetails(props) {
-  let { id } = useParams();
   const user = useSelector((state) => state.auth.user.username);
   const [Polylines, setPolylines] = useState([]);
   const activity = props.location.state.activity;

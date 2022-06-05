@@ -16,7 +16,6 @@ import "../styles/style.scss";
 
 function Wcard(props) {
   const [id, setId] = useState();
-  const history = useHistory();
   let date_time = props.info.start_date.split("T");
   const date = date_time[0];
   const time = date_time[1].split(":");
