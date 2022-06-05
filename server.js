@@ -26,9 +26,7 @@ connection.once("open", () => {
 });
 
 //Routes
-const workoutsRouter = require("./routes/workouts");
 const usersRouter = require("./routes/users");
-app.use("/workouts", workoutsRouter);
 app.use("/users", usersRouter);
 
 //Passport middleware and config
