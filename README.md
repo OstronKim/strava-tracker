@@ -1,7 +1,7 @@
 # Full-stack project in the course TDDD27 Advanced Web Programming
 
-## Midcourse screencast
-https://liuonline-my.sharepoint.com/:v:/g/personal/arvma553_student_liu_se/EfpJ3DK4DntMu4BAaF8wnD0Bs0dw0NdBvmJ0e5uvZZiNiQ?e=wGPat1
+## Project screencast
+https://liuonline-my.sharepoint.com/:v:/g/personal/arvma553_student_liu_se/EdGQIIrl6B9Eg-xlFk9yepgBDKbcnXFi2rrDvKYTB92CSQ?e=zDYvVA
 
 ## Functional description
 
