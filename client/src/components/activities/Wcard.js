@@ -12,7 +12,7 @@ import ListItem from "@mui/material/ListItem";
 import Divider from "@mui/material/Divider";
 import ListItemText from "@mui/material/ListItemText";
 
-import "./styles/style.scss";
+import "../styles/style.scss";
 
 function Wcard(props) {
   const [id, setId] = useState();

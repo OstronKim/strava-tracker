@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Wcard from "./Wcard";
 import { useLocation } from "react-router-dom";
 
-import "./styles/allWorkouts.scss";
+import "../styles/allWorkouts.scss";
 
 function getSummary(activities) {
   let summary = {

@@ -6,7 +6,7 @@ import { logoutUser } from "../actions/authActions";
 import axios from "axios";
 import polyline from "@mapbox/polyline";
 import Map from "./Map";
-import WorkoutCards from "./WorkoutCards";
+import WorkoutCards from "./activities/WorkoutCards";
 import Button from "@mui/material/Button";
 
 import "./styles/style.scss";

@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import Button from "@mui/material/Button";
 
-import "../styles/style.scss";
+import "./styles/style.scss";
 
 class Landing extends Component {
   render() {

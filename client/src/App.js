@@ -9,12 +9,12 @@ import store from "./store";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 
-import Landing from "./components/layout/Landing";
+import Landing from "./components/Landing";
 import Register from "./components/auth/Register";
 import Login from "./components/auth/Login";
 import Dashboard from "./components/Dashboard";
-import AllWorkouts from "./components/AllWorkouts";
-import ActivityDetails from "./components/ActivityDetails";
+import AllWorkouts from "./components/activities/AllWorkouts";
+import ActivityDetails from "./components/activities/ActivityDetails";
 import PrivateRoute from "./components/PrivateRoute";
 
 //Keep user logged in if has valid token
