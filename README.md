@@ -5,7 +5,7 @@ https://liuonline-my.sharepoint.com/:v:/g/personal/arvma553_student_liu_se/EfpJ3
 
 ## Functional description
 
-A running journal where the user can create an account and record their running workouts in a calender. The user can also connect their Strava account in order to get additional information about their workout, like the route. The workout routes from the last 14 days are visualized on a map.
+A journal where the user can track and get information about their activities recorded on Strava, by creating an account and connecting to their Strava account. The app fetches the data from strava and displays information and data about the activities. It also visualizes the routes from the activities on a map.
 
 ## Technical description
 
@@ -16,13 +16,9 @@ A running journal where the user can create an account and record their running 
 
 ### Back-end
 
-- **Node** and **Express**
-
-### Database
-
-- **MongoDB** together with **Mongoose**
+- **Node**, **Express**, **MongoDB**, **Passport.js**.
 
 ### Other tools
 
-**Postman** is used to test the API requests.  
-It will use the Strava API to fetch user data about the workouts.
+**Postman** is used to test the API requests. **Mongoose**, **axios**  
+It will use the **Strava API** to fetch user data about the workouts.
